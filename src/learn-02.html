@@ -49,26 +49,26 @@
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
     <script>
-        var hp = 3;
-        $('#drone').click(function(){
-            console.log('침발사');
-            $('#spit').fadeIn("fast");
-            $('#spit').animate({
-                left : '+250',
-                rotate : '180deg',
-            });
-            $('#spit').fadeOut(function(){
-                hp = hp - 1;
-                $('#hp').text('HP : ' + hp);
-                if(hp == 0) {
-                    $('#bunker').fadeOut();
-                };
-            });
-            $('#spit').css({left: '150px'});
-        });
+        // var hp = 3;
+        // $('#drone').click(function(){
+        //     console.log('침발사');
+        //     $('#spit').fadeIn("fast");
+        //     $('#spit').animate({
+        //         left : '+250',
+        //         rotate : '180deg',
+        //     });
+        //     $('#spit').fadeOut(function(){
+        //         hp = hp - 1;
+        //         $('#hp').text('HP : ' + hp);
+        //         if(hp == 0) {
+        //             $('#bunker').fadeOut();
+        //         };
+        //     });
+        //     $('#spit').css({left: '150px'});
+        // });
     </script>
 
-    <!-- 자 다시해보자 -->
+    <!-- 자! 다시해보자 -->
     <script>
         // click 선언
         // 콘솔로 click이 잘됬는지 확인
@@ -77,7 +77,27 @@
         // 침 이미지가 사라지게
         // 침 이미지가 사라진 후 원위치로 다시 되돌아오게
         // 침을 발사 했을 때 HP가 감소 하도록
-        // HP가 0이 되었을 때 벙커 이미지가 사라지도록
+        // HP가 0이 되었을 때 벙커 이미지가 사라지도록 + hp도 사라지도록
+        var hp = 3;
+
+        $('#drone').click(function(){
+            console.log('hello');
+            $('#spit').fadeIn();
+            $('#spit').animate({
+                left : '300px'
+            });
+            $('#spit').fadeOut(function(){
+                hp = hp - 1;
+                $('#hp').text('HP : ' + hp);
+                if(hp == 0){
+                    $('#bunker').fadeOut();
+                    $('#hp').fadeOut();
+                }
+            });
+            $('#spit').css({
+                left : '150px'
+            });
+        });
 
     </script>
 </body>

@@ -11,21 +11,19 @@
             width: 500px;
             height: 330px;
         }
-        #drone {
+        #me {
             position: absolute;
             width: 100px;
-            height: 100px;
             top: 100px;
             left: 60px;
         }
-        #bunker {
+        #pokemon {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 200px;
             top: 80px;
             right: 20px;
         }
-        #spit {
+        #food {
             display: none;
             position: absolute;
             top: 140px;
@@ -37,12 +35,12 @@
     </style>
 </head>
 <body>
-    <h1 id='hp'>HP : 3</h1>
+    <h1 id='level'>level : 0</h1>
 
     <div class='background'>
-        <img id='drone' src="drone.png" alt="drone">
-        <img id='spit' src="spit.png" alt="spit">
-        <img id='bunker' src="bunker.png" alt="bunker">
+        <img id='me' src="https://i.namu.wiki/i/ks3NvKl4l6ZpMDNiS3qPkY3rTACoV5TqEghGIdAs0y0VjlXESjAPYpx4Ey3paSlmT-NFWYAFVJ_GorlbR2MDfA.webp" alt="me">
+        <img id='food' src="https://thumb.ac-illust.com/72/726ab07bb27bea16767b4bb7df444ad9_t.jpeg" alt="food">
+        <img id='pokemon' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThLdUp7wq6VPu802Rs3Y5mzoDRsOOmp1gVHpKavGwcrg&s" alt="Pokemon">
     </div>
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
@@ -78,26 +76,52 @@
         // 침 이미지가 사라진 후 원위치로 다시 되돌아오게
         // 침을 발사 했을 때 HP가 감소 하도록
         // HP가 0이 되었을 때 벙커 이미지가 사라지도록 + hp도 사라지도록
-        var hp = 3;
+        // var hp = 3;
 
-        $('#drone').click(function(){
-            console.log('hello');
-            $('#spit').fadeIn();
-            $('#spit').animate({
-                left : '300px'
+        // $('#drone').click(function(){
+        //     console.log('hello');
+        //     $('#spit').fadeIn();
+        //     $('#spit').animate({
+        //         left : '300px'
+        //     });
+        //     $('#spit').fadeOut(function(){
+                    // 아래 hp의 감소와 벙커가 죽는것을 fadeOut 안에 입력시키게 되면 fadeOut 행위가 끝낫을때 실행되도록 해주기 위함이다. 만약에 밖으로 뺐다면 동시에 실행될것이다!! 
+        //         hp = hp - 1;
+        //         $('#hp').text('HP : ' + hp);
+        //         if(hp == 0){
+        //             $('#bunker').fadeOut();
+        //             $('#hp').fadeOut();
+        //         }
+        //     });
+        //     $('#spit').css({
+        //         left : '150px'
+        //     });
+        // });
+
+    </script>
+
+    <!-- 자! 다시해보자2차 포켓몬 진화시키기로! -->
+    <script>
+        var level = 0;
+        $('#me').click(function(){
+            $('#food').fadeIn();
+            $('#food').animate({left: '350px'});
+            $('#food').fadeOut(function(){
+                
+                // 페이드 아웃이 완료되면 콜백 함수가 실행됩니다.
+                level = level + 1;
+                $('#level').text('level : ' + level);
+                if(level == 3){
+                    $('#pokemon').attr('src', 'https://i.namu.wiki/i/aEWifwHadSFrAhLEvlOpHwm3Z-gpZf7uLqI7Imic0jGXuPKYL2JNsXCgdYSbWcjeXn24bjrh87HPDWIz5hFinQ.webp');
+                    $('#level').css({color:'yellow'});
+                };
             });
-            $('#spit').fadeOut(function(){
-                hp = hp - 1;
-                $('#hp').text('HP : ' + hp);
-                if(hp == 0){
-                    $('#bunker').fadeOut();
-                    $('#hp').fadeOut();
-                }
-            });
-            $('#spit').css({
-                left : '150px'
-            });
+            $('#food').animate({left: '150px'});
         });
+
+        
+
+        
 
     </script>
 </body>
